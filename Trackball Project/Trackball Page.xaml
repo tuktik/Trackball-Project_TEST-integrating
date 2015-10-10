@@ -1,0 +1,89 @@
+﻿<Page x:Class="Trackball_Project.Trackball_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      Title="데굴데굴" Height="500" Width="1000"
+      Background="#EAEAEA" OpacityMask="Black" ShowsNavigationUI="False" WindowHeight="50">
+
+    <Grid Name="TRACKBALL">
+        <Image Name="Background_Trackball_Image" Source="/Image/Trackball Off.png" Width="220" Margin="0, 0, 0, 0"/>
+        <!-- 기능 아이콘 -->
+        <Image Name="LeftTopIcon" Source="/Image/None.png" Width="80" Height="80" Margin="0, 0, 260, 280"/>
+        <Image Name="RightTopIcon" Source="/Image/None.png" Width="80" Height="80" Margin="260, 0, 0, 280"/>
+        <Image Name="LeftDownIcon" Source="/Image/None.png" Width="80" Height="80" Margin="0, 280, 260, 0"/>
+        <Image Name="RightDownIcon" Source="/Image/None.png" Width="80" Height="80" Margin="260, 280, 0, 0"/>
+
+        <!-- LeftTop Button -->
+        <Button Width="90" Height="90" Margin="0, 0, 260, 280" Click="Click_LeftTop">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Image Name="Background_LeftTop" Source="/Image/Left Top Background.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="Background_LeftTop" Value="/Image/Left Top Background Click.png"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!-- RightTop Button -->
+        <Button Width="90" Height="90" Margin="260, 0, 0, 280" Click="Click_RightTop">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Image Name="Background_RightTop" Source="/Image/Right Top Background.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="Background_RightTop" Value="/Image/Right Top Background Click.png"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!-- LeftDown Button -->
+        <Button Width="90" Height="90" Margin="0, 280, 260, 0" Click="Click_LeftDown">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Image Name="Background_LeftDown" Source="/Image/Left Down Background.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="Background_LeftDown" Value="/Image/Left Down Background Click.png"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!-- Right Down Button -->
+        <Button Width="90" Height="90" Margin="260, 280, 0, 0" Click="Click_RightDown">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Image Name="Background_RightDown" Source="/Image/Right Down Background.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="Background_RightDown" Value="/Image/Right Down Background Click.png"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!-- 기타 -->
+        <Image Name="Trackball_Icon" Source="/Image/Trackball Background.png" Width="30" Margin="0, 0, 860, 380"/>
+        <TextBlock Name="Tracbk_Page_Title" Width="200" Height="100" FontSize="20" Margin="100, 0, 0, 300" HorizontalAlignment="Left">단축키 설정</TextBlock>
+    </Grid>
+</Page>

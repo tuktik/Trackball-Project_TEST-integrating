@@ -1,0 +1,395 @@
+﻿<Controls:MetroWindow x:Class="Trackball_Project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="데굴데굴" TitlebarHeight="50" TitleForeground="White" 
+        Height="600" Width="1000" Background="White"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" OpacityMask="Black" Icon="icon.png"
+        EnableDWMDropShadow="True" Closing="Window_Closing" Closed="Window_Closed">
+    
+        <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl BorderBrush="Azure">
+            <!-- 트랙볼 페이지 구현 -->
+            <Controls:Flyout Name="TrackballPage" Header="Back" Position="Right" Width="1000" Height="500" Theme="Light">
+                <Grid Name="Trackball_Page">
+                    <Image Name="Background_Trackball_Image" Source="/Image/Trackball Off.png" Width="220" Margin="0, 0, 0, 0"/>
+                    <!-- 기능 아이콘 -->
+                    <Image Name="LeftTopIcon" Source="/Image/None.png" Width="80" Height="80" Margin="0, 0, 260, 280"/>
+                    <Image Name="RightTopIcon" Source="/Image/None.png" Width="80" Height="80" Margin="260, 0, 0, 280"/>
+                    <Image Name="LeftDownIcon" Source="/Image/None.png" Width="80" Height="80" Margin="0, 280, 260, 0"/>
+                    <Image Name="RightDownIcon" Source="/Image/None.png" Width="80" Height="80" Margin="260, 280, 0, 0"/>
+                    
+                    <!-- LeftTop Button -->
+                    <Button Width="90" Height="90" Margin="0, 0, 260, 280" Click="Click_LeftTop">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Name="Background_LeftTop" Source="/Image/Left Top Background.png"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="Source" TargetName="Background_LeftTop" Value="/Image/Left Top Background Click.png"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- RightTop Button -->
+                    <Button Width="90" Height="90" Margin="260, 0, 0, 280" Click="Click_RightTop">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Name="Background_RightTop" Source="/Image/Right Top Background.png"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="Source" TargetName="Background_RightTop" Value="/Image/Right Top Background Click.png"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    
+                    <!-- LeftDown Button -->
+                    <Button Width="90" Height="90" Margin="0, 280, 260, 0" Click="Click_LeftDown">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Name="Background_LeftDown" Source="/Image/Left Down Background.png"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="Source" TargetName="Background_LeftDown" Value="/Image/Left Down Background Click.png"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    
+                    <!-- Right Down Button -->
+                    <Button Width="90" Height="90" Margin="260, 280, 0, 0" Click="Click_RightDown">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Name="Background_RightDown" Source="/Image/Right Down Background.png"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="Source" TargetName="Background_RightDown" Value="/Image/Right Down Background Click.png"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- 기타 -->
+                    <Image Name="Trackball_Icon" Source="/Image/Trackball Background.png" Width="30" Margin="0, 0, 860, 380"/>
+                    <TextBlock Name="Trackball_Page_Title" Width="200" Height="100" FontSize="20" Margin="100, 0, 0, 300" HorizontalAlignment="Left">단축키 설정</TextBlock>
+                    
+                </Grid>
+            </Controls:Flyout>
+            
+            <!-- 커스텀 페이지 구현 -->
+            <Controls:Flyout Name="CustomPage" Header="Back" Position="Right" Width="1000" Height="500" Theme="Light">
+                <ScrollViewer Width="1000">
+                    <Grid>
+                        <Image Name="Custom_Icon" Source="/Image/Custom Background.png" Width="30" Margin="0, 0, 860, 2980"/>
+                        <TextBlock Name="Custom_Page_Title" Width="200" Height="100" FontSize="20" Margin="100, 0, 0, 2920" HorizontalAlignment="Left">사용자 설정</TextBlock>
+                        
+                        <!-- Music Customizing -->
+                        <Grid Name="MusicCustom" Width="1000">
+                            <!-- Music Customize Title -->
+                            <Image Name="Music_Icon" Source="/Image/Music.png" Width="40" Height="40" Margin="100, 0, 0, 2850" HorizontalAlignment="Left"/>
+                            <TextBlock Name="MusicTitle" Width="150" Height="50" FontSize="15" Margin="100, 0, 0, 2750" HorizontalAlignment="Left">Music</TextBlock>
+
+                            <!-- Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 2800" HorizontalAlignment="Left">Up</TextBlock>
+                            <ComboBox Name="MusicUp" Width="200" Height="20" Margin="320, 0, 0, 2820" HorizontalAlignment="Left">
+                                <ComboBoxItem Name="PauseMusic">일시정지/재생</ComboBoxItem>
+                                <ComboBoxItem Name="StopMusic">정지</ComboBoxItem>
+                                <ComboBoxItem Name="PreMusic">이전 곡</ComboBoxItem>
+                                <ComboBoxItem Name="NextMusic">다음 곡</ComboBoxItem>
+                                <ComboBoxItem Name="VolumeUp">소리 크게</ComboBoxItem>
+                                <ComboBoxItem Name="VolumeDown">소리 작게</ComboBoxItem>
+                            </ComboBox>
+                            
+                            <!-- Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 2800" HorizontalAlignment="Left">Down</TextBlock>
+                            <ComboBox Name="MusicDown" Width="200" Height="20" Margin="690, 0, 0, 2820" HorizontalAlignment="Left"/>
+                            
+                            <!-- Left -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 2650" HorizontalAlignment="Left">Left</TextBlock>
+                            <ComboBox Name="MusicLeft" Width="200" Height="20" Margin="320, 0, 0, 2670" HorizontalAlignment="Left"/>
+                            
+                            <!-- Right -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 2650" HorizontalAlignment="Left">Right</TextBlock>
+                            <ComboBox Name="MusicRight" Width="200" Height="20" Margin="690, 0, 0, 2670" HorizontalAlignment="Left"/>
+                            
+                            <!-- Drag Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 2500" HorizontalAlignment="Left">Drag Up</TextBlock>
+                            <ComboBox Name="MusicDragUp" Width="200" Height="20" Margin="320, 0, 0, 2520" HorizontalAlignment="Left"/>
+                            
+                            <!-- Drag Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 2500" HorizontalAlignment="Left">Drag Down</TextBlock>
+                            <ComboBox Name="MusicDragDown" Width="200" Height="20" Margin="690, 0, 0, 2520" HorizontalAlignment="Left"/>
+                        </Grid>
+                        
+                        <Grid Name="VideoCustom" Width="1000">
+                            <!-- Video Customize Title -->
+                            <Image Name="Video_Icon" Source="/Image/Video.png" Width="40" Height="40" Margin="100, 0, 0, 2380" HorizontalAlignment="Left"/>
+                            <TextBlock Name="VideoTitle" Width="150" Height="50" FontSize="15" Margin="100, 0, 0, 2280" HorizontalAlignment="Left">Video</TextBlock>
+
+                            <!-- Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 2350" HorizontalAlignment="Left">Up</TextBlock>
+                            <ComboBox Name="VideoUp" Width="200" Height="20" Margin="320, 0, 0, 2370" HorizontalAlignment="Left"/>
+
+                            <!-- Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 2350" HorizontalAlignment="Left">Down</TextBlock>
+                            <ComboBox Name="VideoDown" Width="200" Height="20" Margin="690, 0, 0, 2370" HorizontalAlignment="Left"/>
+
+                            <!-- Left -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 2200" HorizontalAlignment="Left">Left</TextBlock>
+                            <ComboBox Name="VideoLeft" Width="200" Height="20" Margin="320, 0, 0, 2220" HorizontalAlignment="Left"/>
+
+                            <!-- Right -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 2200" HorizontalAlignment="Left">Right</TextBlock>
+                            <ComboBox Name="VideoRight" Width="200" Height="20" Margin="690, 0, 0, 2220" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 2050" HorizontalAlignment="Left">Drag Up</TextBlock>
+                            <ComboBox Name="VideoDragUp" Width="200" Height="20" Margin="320, 0, 0, 2070" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 2050" HorizontalAlignment="Left">Drag Down</TextBlock>
+                            <ComboBox Name="VideoDragDown" Width="200" Height="20" Margin="690, 0, 0, 2070" HorizontalAlignment="Left"/>
+                        </Grid>
+
+                        <Grid Name="PictureCustom" Width="1000">
+                            <!-- Picture Customize Title -->
+                            <Image Name="Picture_Icon" Source="/Image/Picture.png" Width="40" Height="40" Margin="100, 0, 0, 1930" HorizontalAlignment="Left"/>
+                            <TextBlock Name="PictureTitle" Width="150" Height="50" FontSize="15" Margin="100, 0, 0, 1830" HorizontalAlignment="Left">Picture</TextBlock>
+
+                            <!-- Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 1900" HorizontalAlignment="Left">Up</TextBlock>
+                            <ComboBox Name="PictureUp" Width="200" Height="20" Margin="320, 0, 0, 1920" HorizontalAlignment="Left"/>
+
+                            <!-- Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 1900" HorizontalAlignment="Left">Down</TextBlock>
+                            <ComboBox Name="PictureDown" Width="200" Height="20" Margin="690, 0, 0, 1920" HorizontalAlignment="Left"/>
+
+                            <!-- Left -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 1750" HorizontalAlignment="Left">Left</TextBlock>
+                            <ComboBox Name="PictureLeft" Width="200" Height="20" Margin="320, 0, 0, 1770" HorizontalAlignment="Left"/>
+
+                            <!-- Right -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 1750" HorizontalAlignment="Left">Right</TextBlock>
+                            <ComboBox Name="PictureRight" Width="200" Height="20" Margin="690, 0, 0, 1770" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 1600" HorizontalAlignment="Left">Drag Up</TextBlock>
+                            <ComboBox Name="PictureDragUp" Width="200" Height="20" Margin="320, 0, 0, 1620" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 1600" HorizontalAlignment="Left">Drag Down</TextBlock>
+                            <ComboBox Name="PictureDragDown" Width="200" Height="20" Margin="690, 0, 0, 1620" HorizontalAlignment="Left"/>
+                        </Grid>
+
+                        <Grid Name="DesktopCustom" Width="1000">
+                            <!-- Desktop Customize Title -->
+                            <Image Name="Desktop_Icon" Source="/Image/Desktop.png" Width="40" Height="40" Margin="100, 0, 0, 1480" HorizontalAlignment="Left"/>
+                            <TextBlock Name="DesktopTitle" Width="150" Height="50" FontSize="15" Margin="100, 0, 0, 1380" HorizontalAlignment="Left">Desktop</TextBlock>
+
+                            <!-- Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 1450" HorizontalAlignment="Left">Up</TextBlock>
+                            <ComboBox Name="DesktopUp" Width="200" Height="20" Margin="320, 0, 0, 1470" HorizontalAlignment="Left"/>
+
+                            <!-- Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 1450" HorizontalAlignment="Left">Down</TextBlock>
+                            <ComboBox Name="DesktopDown" Width="200" Height="20" Margin="690, 0, 0, 1470" HorizontalAlignment="Left"/>
+
+                            <!-- Left -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 1300" HorizontalAlignment="Left">Left</TextBlock>
+                            <ComboBox Name="DesktopLeft" Width="200" Height="20" Margin="320, 0, 0, 1320" HorizontalAlignment="Left"/>
+
+                            <!-- Right -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 1300" HorizontalAlignment="Left">Right</TextBlock>
+                            <ComboBox Name="DesktopRight" Width="200" Height="20" Margin="690, 0, 0, 1320" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 1150" HorizontalAlignment="Left">Drag Up</TextBlock>
+                            <ComboBox Name="DesktopDragUp" Width="200" Height="20" Margin="320, 0, 0, 1170" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 1150" HorizontalAlignment="Left">Drag Down</TextBlock>
+                            <ComboBox Name="DesktopDragDown" Width="200" Height="20" Margin="690, 0, 0, 1170" HorizontalAlignment="Left"/>
+                        </Grid>
+
+                        <Grid Name="UserCustom" Width="1000">
+                            <!-- User Customize Title -->
+                            <Image Name="User_Icon" Source="/Image/Custom.png" Width="40" Height="40" Margin="100, 0, 0, 1030" HorizontalAlignment="Left"/>
+                            <TextBlock Name="UserTitle" Width="150" Height="50" FontSize="15" Margin="100, 0, 0, 930" HorizontalAlignment="Left">User</TextBlock>
+
+                            <!-- Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 1000" HorizontalAlignment="Left">Up</TextBlock>
+                            <ComboBox Name="UserUp" Width="200" Height="20" Margin="320, 0, 0, 1020" HorizontalAlignment="Left"/>
+
+                            <!-- Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 1000" HorizontalAlignment="Left">Down</TextBlock>
+                            <ComboBox Name="UserDown" Width="200" Height="20" Margin="690, 0, 0, 1020" HorizontalAlignment="Left"/>
+
+                            <!-- Left -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 850" HorizontalAlignment="Left">Left</TextBlock>
+                            <ComboBox Name="UserLeft" Width="200" Height="20" Margin="320, 0, 0, 870" HorizontalAlignment="Left"/>
+
+                            <!-- Right -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 850" HorizontalAlignment="Left">Right</TextBlock>
+                            <ComboBox Name="UserRight" Width="200" Height="20" Margin="690, 0, 0, 870" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Up -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="200, 0, 0, 700" HorizontalAlignment="Left">Drag Up</TextBlock>
+                            <ComboBox Name="UserDragUp" Width="200" Height="20" Margin="320, 0, 0, 720" HorizontalAlignment="Left"/>
+
+                            <!-- Drag Down -->
+                            <TextBlock Width="100" Height="50" FontSize="18" Margin="570, 0, 0, 700" HorizontalAlignment="Left">Drag Down</TextBlock>
+                            <ComboBox Name="UserDragDown" Width="200" Height="20" Margin="690, 0, 0, 720" HorizontalAlignment="Left"/>
+                        </Grid>
+                        
+                    </Grid>
+                </ScrollViewer>
+            </Controls:Flyout>
+
+            <!-- 설정 페이지 구현 -->
+            <Controls:Flyout Name="SettingPage" Header="Back" Position="Right" Width="1000" Height="500" Theme="Light">
+                <Grid>
+                    <!-- 기타 -->
+                    <Image Name="Setting_Icon" Source="/Image/Setting Background.png" Width="30" Margin="0, 0, 860, 380"/>
+                    <TextBlock Name="Setting_Page_Title" Width="200" Height="100" FontSize="20" Margin="100, 0, 0, 300" HorizontalAlignment="Left">기타 설정</TextBlock>
+
+                    <Button Width="200" Margin="100, 0, 0, 250" HorizontalAlignment="Left" Click="Init_Button_Click">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Name="Initialize_Button" Source="/Image/Initialize Button.png"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="Source" TargetName="Initialize_Button" Value="/Image/Initialize Button Clicked.png"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Width="300" Margin="110, 0, 0, 100" HorizontalAlignment="Left" Click="Driver_Button_Click">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Name="DeviceDriver_Button" Source="/Image/Device Driver Button.png"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="Source" TargetName="DeviceDriver_Button" Value="/Image/Device Driver Button Clicked.png"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Name ="Auto_RID_Event" Width="220" Margin="600, 0, 0, 260" HorizontalAlignment="Left" Click="Virtual_Desktop_Button_Click">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Image Name="VirtualDesktop_Button" Source="/Image/Virtual Desktop Button.png"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Button.IsMouseOver" Value="True">
+                                        <Setter Property="Source" TargetName="VirtualDesktop_Button" Value="/Image/Virtual Desktop Button Clicked.png"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    
+                    <!-- 기타 설정 구현부 -->
+                    <Image Name="ETC_Setting_Button" Source="/Image/ETC Setting Button.png" Width="180" Margin="110, 50, 0, 0" HorizontalAlignment="Left"/>
+                    <Button Width="200" Height="50" Margin="600, 0, 0, 150" HorizontalAlignment="Left" Click="ToggleTrayIcon">Toggle TrayIcon</Button>
+                    
+                    <Button Width="50" Height="50" Margin="150, 200, 0, 0" HorizontalAlignment="Left" Click="ColorChange" Name="Red">Red</Button>
+                    <Button Width="50" Height="50" Margin="200, 200, 0, 0" HorizontalAlignment="Left" Click="ColorChange" Name="Blue">Blue</Button>
+                    <Button Width="50" Height="50" Margin="250, 200, 0, 0" HorizontalAlignment="Left" Click="ColorChange" Name="Green">Green</Button>
+                    <Button Width="50" Height="50" Margin="300, 200, 0, 0" HorizontalAlignment="Left" Click="ColorChange" Name="Purple">Purple</Button>
+                    
+                </Grid>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+
+    <!-- 메인 페이지 구현 -->
+    <Grid Name="RootLayout" Width="1000" Height="600">
+        <!-- 트랙볼 버튼 -->
+        <Button Height="200" HorizontalAlignment="Left" Margin="125,170,0,200" Click="Trackball_Button_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Image x:Name="Trackball_Background" Source="/Image/Trackball Off.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="Trackball_Background" Value="/Image/Trackball On.png"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Source" TargetName="Trackball_Background" Value="/Image/Trackball Clicked.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
+        <!-- 커스텀 버튼 -->
+        <Button Height="200" Margin="392,185,0,215" HorizontalAlignment="Left" Click="Custom_Button_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Image x:Name="Custom_Background" Source="/Image/Custom Off.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="Custom_Background" Value="/Image/Custom On.png"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Source" TargetName="Custom_Background" Value="/Image/Custom Clicked.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
+        <!-- 설정 버튼 -->
+        <Button Height="200" Margin="695,170,0,200" HorizontalAlignment="Left" Click="Setting_Button_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Image x:Name="Setting_Background" Source="/Image/Setting Off.png"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Source" TargetName="Setting_Background" Value="/Image/Setting On.png"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter Property="Source" TargetName="Setting_Background" Value="/Image/Setting Clicked.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>

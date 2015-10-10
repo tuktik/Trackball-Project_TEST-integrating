@@ -1,0 +1,23 @@
+﻿<Controls:MetroWindow x:Class="Trackball_Project.DriverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="Mouse Device List" TitlebarHeight="50" TitleForeground="White" 
+        Height="500" Width="800" Background="White"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" OpacityMask="Black" Icon="icon.png"
+        EnableDWMDropShadow="True" WindowTitleBrush="#5872A5">
+    <Grid>
+        <Image Name="Driver_Icon" Source="/Image/Device Driver Background.png" Width="30" Margin="30,10,0,370" HorizontalAlignment="Left"/>
+        <TextBlock Name="DeviceDriver_Page_Title" Width="250" Height="30" FontSize="20" Margin="80, 0, 0, 360" HorizontalAlignment="Left">디바이스 드라이버 설정</TextBlock>
+            <ListBox Name="DeviceList" Height="300" Width="600" BorderBrush="#5872A5" BorderThickness="1" Margin="0, 40, 0, 0"
+                     SelectionChanged="Mouse_Selected">
+                <!--
+                <ScrollViewer>
+                    
+                </ScrollViewer>
+                -->
+            </ListBox>
+        <Button Name="DeviceDriverSetting_Button" Click ="Device_Drive_Select_Btn" Width="500" Height="30" Margin="0, 400, 0, 0" BorderBrush="#5872A5">해당 디바이스 선택</Button>
+
+    </Grid>
+</Controls:MetroWindow>
