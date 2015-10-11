@@ -23,50 +23,38 @@ using System.Diagnostics;
 using System.Management;
 
 using System.Runtime.InteropServices;
-
-
 namespace virtual_desktop
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// Interaction logic for Virtual_Desktop.xaml
     /// </summary>
-    /// 
-    //Declare Auto Function SetParent Lib "user32.dll" (ByVal hWndChild As IntPtr, ByVal hWndNewParent As IntPtr) As Integer
-
-    public partial class MainWindow : Window
+    public partial class Virtual_Desktop : Window
     {
         [DllImport("user32.dll")]//SetLastError = true
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
-            //string lpszDesktop, IntPtr lpszDevice, IntPtr pDevmode, int dwFlags, long dwDesiredAccess, IntPtr lpsa);
+        //string lpszDesktop, IntPtr lpszDevice, IntPtr pDevmode, int dwFlags, long dwDesiredAccess, IntPtr lpsa);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, Int32 wParam, Int32 lParam);
 
         [DllImport("User32.dll")]
-        public static extern IntPtr GetParent (IntPtr hWnd);
+        public static extern IntPtr GetParent(IntPtr hWnd);
 
         [DllImport("kernel32.dll")]
         static extern uint GetCurrentProcessId();
 
         private const int WM_SYSCOMMAND = 274;
         private const int SC_MAXIMIZE = 61488;
-       // Private Const SC_MAXIMIZE As Integer = 61488
+        // Private Const SC_MAXIMIZE As Integer = 61488
 
         private string currentDesktop = "Default";
         public static string Start = string.Empty;
 
-        public MainWindow()
+        public Virtual_Desktop()
         {
-
             Start = "start";
 
             InitializeComponent();
-            //default_image.Source = Screenshot.CaptureScreen();
-            //DesktopInitialize
-            //default_image = ConvertDrawingImageToWPFImage(Screenshot.CaptureScreen());
-            //DesktopInitialize("Desktop2");
-
-            //this.Loaded += new RoutedEventHandler(this.Window_Loaded);
         }
 
         private System.Windows.Controls.Image ConvertDrawingImageToWPFImage(System.Drawing.Image gdiImg)
@@ -91,7 +79,7 @@ namespace virtual_desktop
             for (int index = 1; index < 5; index++)
             {
                 string path = System.IO.Path.GetDirectoryName(winforms.Application.ExecutablePath) + "\\Desktop" + index.ToString(); // Name of the image
-               
+
                 if (File.Exists(path))  // If file exists
                 {
                     MemoryStream stream = new MemoryStream();
@@ -110,7 +98,7 @@ namespace virtual_desktop
 
                     //Image1.Source = bitmapimage;
                     //Image1.Stretch = Stretch.Uniform;
-                    
+
                     switch (index)
                     {
                         case 2:
@@ -131,13 +119,13 @@ namespace virtual_desktop
                         default:
                             //default_image.Source = Screenshot.CaptureScreen();
                             Image1.Source = bitmapimage;
-                             Image1.Stretch = Stretch.Uniform;
-                            
+                            Image1.Stretch = Stretch.Uniform;
+
                             //Image1.imagebrush
                             //= ConvertDrawingImageToWPFImage(Bitmap.FromStream(stream));
                             break;
                     }
-   
+
                 }// if
                 else
                 {
@@ -188,14 +176,14 @@ namespace virtual_desktop
 
             if (!Desktops.DesktopExists(name))
             {
-                Console.WriteLine("create"+name);
+                Console.WriteLine("create" + name);
                 Desktops.DesktopCreate(name);
                 Desktops.ProcessCreate(name, System.Reflection.Assembly.GetExecutingAssembly().Location, "start");     // Start VirtualDesktop application
                 Console.WriteLine(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                
+
             }
 
-            Console.WriteLine(name+" desktop Handle ID"+Desktops.get_DesktopHandle(name));
+            Console.WriteLine(name + " desktop Handle ID" + Desktops.get_DesktopHandle(name));
             Desktops.DesktopSwitch(name);
         }
 
@@ -225,18 +213,18 @@ namespace virtual_desktop
 
         void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if(Start == "start")
+            if (Start == "start")
             {
-                Thread.Sleep(500);  
+                Thread.Sleep(500);
                 //Console.WriteLine("call loaded");
 
                 Process myProcess = new Process();
-                
+
                 myProcess.StartInfo.FileName = "C:\\Windows\\explorer.exe";
                 myProcess.StartInfo.UseShellExecute = true;
                 myProcess.StartInfo.WorkingDirectory = System.Windows.Forms.Application.StartupPath;
                 myProcess.StartInfo.CreateNoWindow = true;
-                
+
 
                 myProcess.Start();
                 //Process proc = Process.Start("explorer.exe");
@@ -283,7 +271,7 @@ namespace virtual_desktop
                 //SendMessage(proc.MainWindowHandle, WM_SYSCOMMAND, SC_MAXIMIZE, 0);
                  * */
                 Thread.Sleep(500);                                                         // Wait explorer to initialize
-                
+
                 // Reposition window on taskbar   
                 this.Opacity = 0;
                 this.WindowState = WindowState.Normal;
@@ -291,8 +279,8 @@ namespace virtual_desktop
                 Thread.Sleep(300);
                 this.Opacity = 100;
             }
-                
-            
+
+
 
             // Initialize
             currentDesktop = Desktops.DesktopName(Desktops.DesktopOpenInput());
@@ -321,7 +309,7 @@ namespace virtual_desktop
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            if(Desktops.DesktopExists("Desktop2"))
+            if (Desktops.DesktopExists("Desktop2"))
             {
                 Desktops.DesktopClose("Desktop2");
             }
@@ -338,7 +326,7 @@ namespace virtual_desktop
 
         void Image1_Click(object sender, EventArgs e)
         {
-                                                         //Console.WriteLine("image1click");
+            //Console.WriteLine("image1click");
             this.WindowState = WindowState.Minimized;
 
             DesktopInitialize("Default");
@@ -346,30 +334,27 @@ namespace virtual_desktop
 
         void Image2_Click(object sender, EventArgs e)
         {
-            
-                                                        //Console.WriteLine("image2click");
+
+            //Console.WriteLine("image2click");
             this.WindowState = WindowState.Minimized;
-            
+
             DesktopInitialize("Desktop2");
         }
 
         void Image3_Click(object sender, EventArgs e)
         {
-           // Start = "start";
+            // Start = "start";
             this.WindowState = WindowState.Minimized;
-            
+
             DesktopInitialize("Desktop3");
         }
 
         void Image4_Click(object sender, EventArgs e)
         {
-           // Start = "start";
+            // Start = "start";
             this.WindowState = WindowState.Minimized;
-            
+
             DesktopInitialize("Desktop4");
         }
-
     }
-
-    
 }

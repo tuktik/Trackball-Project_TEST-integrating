@@ -104,6 +104,7 @@
     <Compile Include="AppearanceViewModel.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="DataStructure.cs" />
+    <Compile Include="Desktops.cs" />
     <Compile Include="DeviceManagement.cs" />
     <Compile Include="DriverWindow.xaml.cs">
       <DependentUpon>DriverWindow.xaml</DependentUpon>
@@ -115,6 +116,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Screenshot.cs" />
     <Compile Include="SelectWindow.xaml.cs">
       <DependentUpon>SelectWindow.xaml</DependentUpon>
     </Compile>
@@ -125,6 +127,9 @@
       <DependentUpon>Trackball Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Unit.cs" />
+    <Compile Include="Virtual Desktop.xaml.cs">
+      <DependentUpon>Virtual Desktop.xaml</DependentUpon>
+    </Compile>
     <Page Include="DriverWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +161,10 @@
     <Page Include="Trackball Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Virtual Desktop.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +288,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="black.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />

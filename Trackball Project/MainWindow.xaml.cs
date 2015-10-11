@@ -20,6 +20,8 @@ using WinForms = System.Windows.Forms;  // Tray Icon 사용 시 설정
 using System.Windows.Interop;
 using System.Runtime.InteropServices;
 
+using virtual_desktop;
+
 namespace Trackball_Project
 {
     /// <summary>
@@ -412,26 +414,25 @@ namespace Trackball_Project
             if (setVID == null && setPID == null)
             {
                 MessageBox.Show("선택한 마우스가 없습니다.");
-                return;
+                //return;
             }
-            var window = new Window();
+            
+            Virtual_Desktop test = new Virtual_Desktop();
+            test.Show();
 
-            //int hwnd = this.hwnd;
-            int hwnd = FindWindowEx(0, 0, 0, "데굴데굴");
-            Console.WriteLine(hwnd);
-            //var handle = new WindowInteropHelper(window).EnsureHandle();
-            //IntPtr myHandle = handle;
-            //var handle = new WindowInteropHelper(window);
-            //IntPtr myHandle = handle.Handle;
-            IntPtr myHandle = (IntPtr)hwnd;
-            id = new InputDevice(myHandle);
-            NumKeyboard = id.EnumerateDevices();
-            id.MouseEvent += new InputDevice.MouseEventHandler(m_MouseEvent);
-            id.KeyPressed += new InputDevice.DeviceEventHandler(m_KeyEvent);
 
-            Console.WriteLine("\nNum " + NumKeyboard);
-            mouseHook.Install();
-            MessageBox.Show("you click desktop button!!");
+            //int hwnd = FindWindowEx(0, 0, 0, "데굴데굴");
+            //Console.WriteLine(hwnd);
+
+            //IntPtr myhandle = (IntPtr)hwnd;
+            //id = new InputDevice(myhandle);
+            //NumKeyboard = id.EnumerateDevices();
+            //id.MouseEvent += new InputDevice.MouseEventHandler(m_MouseEvent);
+            //id.KeyPressed += new InputDevice.DeviceEventHandler(m_KeyEvent);
+
+            //Console.WriteLine("\nnum " + NumKeyboard);
+            //mouseHook.Install();
+            //MessageBox.Show("you click desktop button!!");
         }
 
         public void auto_start()

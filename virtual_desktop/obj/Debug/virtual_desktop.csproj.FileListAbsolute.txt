@@ -11,3 +11,11 @@ C:\Users\lee\Documents\GitHub\virtualdesktop\virtual_desktop_150929\obj\Debug\vi
 C:\Users\lee\Documents\GitHub\virtualdesktop\virtual_desktop_150929\obj\Debug\virtual_desktop.csproj.GenerateResource.Cache
 C:\Users\lee\Documents\GitHub\virtualdesktop\virtual_desktop_150929\obj\Debug\virtual_desktop_150929.exe
 C:\Users\lee\Documents\GitHub\virtualdesktop\virtual_desktop_150929\obj\Debug\virtual_desktop_150929.pdb
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\virtual_desktop.csprojResolveAssemblyReference.cache
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\Virtual Desktop.baml
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\Virtual Desktop.g.cs
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\virtual_desktop_150929_MarkupCompile.cache
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\virtual_desktop_150929.g.resources
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\virtual_desktop_150929.Properties.Resources.resources
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\virtual_desktop.csproj.GenerateResource.Cache
+C:\Users\lee\Documents\GitHub\Trackball Project_중간리뷰 (15-10-05)\virtual_desktop\obj\Debug\virtual_desktop_150929.exe
